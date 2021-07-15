@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "190944259852",
+    "project_id": "wegotnext-8c65c",
+    "storage_bucket": "wegotnext-8c65c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190944259852:android:710e082cd3b71fc3172329",
+        "android_client_info": {
+          "package_name": "com.example.wegotnext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190944259852-q792k8gu1vcb1uto53qscssrqmf7ro8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEZRN_LvBSpeuLMvixiIYkoGSV19mAmBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190944259852-q792k8gu1vcb1uto53qscssrqmf7ro8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

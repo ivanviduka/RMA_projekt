@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start_all"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end_all"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="50dp" />
+
+    <TextView
+        android:id="@+id/tv_all_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_all_court"
+        app:layout_constraintStart_toStartOf="@id/guideline_start_all"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="City" />
+
+    <TextView
+        android:id="@+id/tv_all_court"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end_all"
+        app:layout_constraintStart_toEndOf="@id/tv_all_city"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Court" />
+
+    <TextView
+        android:id="@+id/tv_all_game_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_all_time"
+        app:layout_constraintStart_toStartOf="@id/guideline_start_all"
+        app:layout_constraintTop_toBottomOf="@id/tv_all_city"
+        tools:text="2v2" />
+
+    <TextView
+        android:id="@+id/tv_all_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end_all"
+        app:layout_constraintStart_toEndOf="@id/tv_all_game_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_all_court"
+        tools:text="17:00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
