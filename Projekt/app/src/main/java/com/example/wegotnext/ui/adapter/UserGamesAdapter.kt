@@ -6,14 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wegotnext.R
 import com.example.wegotnext.model.Game
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.item_user_games.view.*
 
 class UserGamesAdapter :
     RecyclerView.Adapter<UserGamesAdapter.UserGamesViewHolder>() {
 
     private val userGames = ArrayList<Game>()
-    private val firestoreDB = FirebaseFirestore.getInstance()
 
     class UserGamesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(game: Game) {
@@ -28,33 +26,31 @@ class UserGamesAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserGamesViewHolder {
 
         return UserGamesViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_user_games,
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_user_games,
                 parent, false
             )
         )
     }
 
-    private fun deleteUserGame(id: String, position: Int) {
-        firestoreDB.collection("Games")
-            .document(id)
-            .delete()
-            .addOnCompleteListener {
-                userGames.removeAt(position)
-                notifyItemRemoved(position)
-                notifyItemRangeChanged(position, userGames.size)
-            }
+    fun deleteGame(position: Int) {
+
+        userGames.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, userGames.size)
+
     }
 
     override fun getItemCount() = userGames.size
 
+    fun getGame(position: Int) = userGames[position]
+
     override fun onBindViewHolder(holder: UserGamesViewHolder, position: Int) {
         val game = userGames[position]
         holder.bind(game)
-        holder.itemView.ivDelete.setOnClickListener{ deleteUserGame(game.id!!,position)}
-
     }
 
-    fun addGames(listOfGames: MutableList<Game>){
+    fun addGames(listOfGames: MutableList<Game>) {
         this.userGames.clear()
         this.userGames.addAll(listOfGames)
         this.notifyDataSetChanged()

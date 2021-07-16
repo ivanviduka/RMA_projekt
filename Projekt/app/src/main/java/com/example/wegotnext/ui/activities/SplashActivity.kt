@@ -25,9 +25,9 @@ class SplashActivity : AppCompatActivity() {
         @Suppress("DEPRECATION")
         Handler().postDelayed(
             {
-                if(viewModel.userLoggedIn()){
+                if (viewModel.userLoggedIn()) {
                     startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                } else{
+                } else {
                     startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 }
                 finish()

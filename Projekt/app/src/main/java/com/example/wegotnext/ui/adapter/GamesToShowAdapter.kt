@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.wegotnext.ui.fragments.AllGamesFragment
 import com.example.wegotnext.ui.fragments.UserGamesFragment
 
-class GamesToShowAdapter (fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class GamesToShowAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     val fragments = arrayOf(
         AllGamesFragment.newInstance(),
         UserGamesFragment.newInstance()
@@ -15,9 +15,11 @@ class GamesToShowAdapter (fragmentManager: FragmentManager) : FragmentPagerAdapt
     override fun getItem(position: Int): Fragment {
         return fragments[position]
     }
+
     override fun getPageTitle(position: Int): CharSequence? {
         return titles[position]
     }
+
     override fun getCount(): Int {
         return fragments.size;
     }

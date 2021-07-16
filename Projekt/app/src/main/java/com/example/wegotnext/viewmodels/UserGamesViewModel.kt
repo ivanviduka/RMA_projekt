@@ -14,10 +14,11 @@ import com.google.firebase.firestore.ListenerRegistration
 class UserGamesViewModel : ViewModel() {
 
 
-
     private val db = FirebaseFirestore.getInstance()
-    private val gamesRef = db.collection("Games").whereEqualTo("createdBy",
-        PreferenceManager().retrieveUsername())
+    private val gamesRef = db.collection("Games").whereEqualTo(
+        "createdBy",
+        PreferenceManager().retrieveUsername()
+    )
     private var firestoreListener: ListenerRegistration? = null
     private val _userGames = MutableLiveData<MutableList<Game>>()
     val userGames: LiveData<MutableList<Game>> = _userGames
@@ -26,7 +27,7 @@ class UserGamesViewModel : ViewModel() {
         loadGames()
     }
 
-    fun loadGames(){
+    fun loadGames() {
 
         val arrayOfGames: ArrayList<Game> = ArrayList()
 
@@ -48,7 +49,7 @@ class UserGamesViewModel : ViewModel() {
 
     }
 
-    fun setupListener(){
+    fun setupListener() {
 
         firestoreListener = gamesRef
             .addSnapshotListener(EventListener { documentSnapshots, e ->
@@ -71,6 +72,16 @@ class UserGamesViewModel : ViewModel() {
 
     fun removeListener() {
         firestoreListener!!.remove()
+    }
+
+    fun deleteGame(id: String) {
+        db.collection("Games")
+            .document(id)
+            .delete()
+            .addOnCompleteListener {
+
+            }
+
     }
 
 }

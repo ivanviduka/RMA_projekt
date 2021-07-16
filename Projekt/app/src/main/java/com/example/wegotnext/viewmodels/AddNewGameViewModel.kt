@@ -41,7 +41,7 @@ class AddNewGameViewModel : ViewModel() {
         }
     }
 
-    fun saveGame(game: Game){
+    fun saveGame(game: Game) {
         gamesRef.add(game).addOnSuccessListener(OnSuccessListener { documentReference ->
             _message.postValue("Game created successfully")
             _addGameSuccess.postValue(true)

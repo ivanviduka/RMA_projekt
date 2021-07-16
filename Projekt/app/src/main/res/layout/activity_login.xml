@@ -64,8 +64,8 @@
         android:id="@+id/tv_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/link_blue"
         android:text="Forgot Password?"
+        android:textColor="@color/link_blue"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/et_password"
         app:layout_constraintTop_toBottomOf="@id/et_password" />

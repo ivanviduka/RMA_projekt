@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.wegotnext.utils.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivityViewModel: ViewModel() {
+class MainActivityViewModel : ViewModel() {
 
-    fun userLogout(){
+    fun userLogout() {
         PreferenceManager().saveGames("")
         PreferenceManager().saveUsername("")
         FirebaseAuth.getInstance().signOut()

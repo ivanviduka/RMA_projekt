@@ -32,7 +32,7 @@ class PreferenceManager {
         return sharedPreferences.getString(PREFS_KEY_USERNAME, "") ?: ""
     }
 
-    fun saveGames(checkedGames: String){
+    fun saveGames(checkedGames: String) {
 
         val sharedPreferences = WeGotNextApp.context.getSharedPreferences(
             PREFS_FILE, Context.MODE_PRIVATE

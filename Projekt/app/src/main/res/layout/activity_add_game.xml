@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="50dp" />
+        app:layout_constraintGuide_begin="20dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_end_add_edit"
@@ -40,19 +40,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-
         android:id="@+id/spin_court"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="right"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_court"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit"
-        app:layout_constraintStart_toStartOf="@id/guideline_middle_add" />
+        app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit" />
 
     <TextView
         android:id="@+id/tv_add_edit_game_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:text="Game type:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/guideline_start_add_edit"
@@ -63,8 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_edit_game_type"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit"
-        app:layout_constraintStart_toStartOf="@id/guideline_middle_add" />
+        app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit" />
 
     <TextView
         android:id="@+id/tv_add_edit_time"
@@ -83,12 +82,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_border"
+        android:gravity="center"
         android:hint="Game start time"
         android:inputType="time"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_edit_time"
         app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit"
-        app:layout_constraintStart_toStartOf="@id/guideline_middle_add"
         app:layout_constraintTop_toBottomOf="@id/spin_game_type" />
 
     <TextView
@@ -104,15 +103,15 @@
 
     <EditText
         android:id="@+id/et_add_edit_players"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_border"
+        android:gravity="center"
         android:inputType="number"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_edit_playesr"
         app:layout_constraintEnd_toEndOf="@id/guideline_end_add_edit"
-        app:layout_constraintStart_toStartOf="@id/guideline_middle_add"
         app:layout_constraintTop_toBottomOf="@id/et_add_edit_time" />
 
     <Button

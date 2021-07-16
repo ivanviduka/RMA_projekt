@@ -40,9 +40,11 @@ class GameDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         setupUI()
         viewModel.loadAudio()
 
-        viewModel.message.observe(this
+        viewModel.message.observe(
+            this
         ) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()}
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -91,7 +93,7 @@ class GameDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-        if (gameCreator == currentUsername || playersComing >= playersNeeded ||gameIsChecked) {
+        if (gameCreator == currentUsername || playersComing >= playersNeeded || gameIsChecked) {
             btn_coming.setBackgroundColor(resources.getColor(R.color.grey))
             btn_coming.isEnabled = false
         } else {
@@ -117,7 +119,15 @@ class GameDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         playersComing = playersComing!! + 1
 
-        var updateGame = Game(gameCity, selectedCourt, gameCreator, gameTime, gameType, playersNeeded!!, playersComing!!)
+        var updateGame = Game(
+            gameCity,
+            selectedCourt,
+            gameCreator,
+            gameTime,
+            gameType,
+            playersNeeded!!,
+            playersComing!!
+        )
 
         viewModel.updateGame(gameID, updateGame)
         tv_players_coming_value.text = playersComing.toString()
@@ -134,8 +144,8 @@ class GameDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val currentGamesArray = PreferenceManager().retrieveGames().split(",")
         var removedGame = ""
-        for(game in currentGamesArray){
-            if(game != gameID){
+        for (game in currentGamesArray) {
+            if (game != gameID) {
                 removedGame += "$game,"
             }
         }
@@ -143,7 +153,15 @@ class GameDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         playersComing = playersComing!! - 1
 
-        var updateGame = Game(gameCity, selectedCourt, gameCreator, gameTime, gameType, playersNeeded!!, playersComing!!)
+        var updateGame = Game(
+            gameCity,
+            selectedCourt,
+            gameCreator,
+            gameTime,
+            gameType,
+            playersNeeded!!,
+            playersComing!!
+        )
 
         viewModel.updateGame(gameID, updateGame)
         tv_players_coming_value.text = playersComing.toString()

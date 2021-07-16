@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        when(id) {
+        when (id) {
             R.id.item_logout -> {
                 showDialog()
             }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showDialog(){
+    private fun showDialog() {
         // Late initialize an alert dialog object
         lateinit var dialog: AlertDialog
 
@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
         builder.setTitle("Are you sure you want to log out?")
 
         // On click listener for dialog buttons
-        val dialogClickListener = DialogInterface.OnClickListener{ _, which ->
-            when(which){
+        val dialogClickListener = DialogInterface.OnClickListener { _, which ->
+            when (which) {
                 DialogInterface.BUTTON_POSITIVE -> {
                     viewModel.userLogout()
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         // Set the alert dialog negative/no button
-        builder.setNegativeButton("NO",dialogClickListener)
+        builder.setNegativeButton("NO", dialogClickListener)
         // Set the alert dialog positive/yes button
-        builder.setPositiveButton("YES",dialogClickListener)
+        builder.setPositiveButton("YES", dialogClickListener)
 
         // Initialize the AlertDialog using builder object
         dialog = builder.create()

@@ -21,12 +21,14 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        viewModel.message.observe(this
+        viewModel.message.observe(
+            this
         ) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()}
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.registrationSuccess.observe(this) {
-            if(it){
+            if (it) {
                 finish()
             }
         }
@@ -36,7 +38,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        tv_login_link.setOnClickListener{onBackPressed()}
+        tv_login_link.setOnClickListener { onBackPressed() }
         btn_register.setOnClickListener { registerUser() }
     }
 
@@ -54,33 +56,32 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun inputIsValid(): Boolean {
 
-        if(allFieldsChecked()){
-            if(!validEmail()){
+        if (allFieldsChecked()) {
+            if (!validEmail()) {
                 Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show()
                 return false
-            }
-
-            else if(!validPassword()){
+            } else if (!validPassword()) {
                 Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
                 return false
-            }
-            else{
+            } else {
                 return true
             }
-        }
-        else{
+        } else {
             Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
             return false
         }
     }
 
-    private fun validPassword() = et_password_reg.text.toString() == et_confirm_password.text.toString()
+    private fun validPassword() =
+        et_password_reg.text.toString() == et_confirm_password.text.toString()
 
     private fun validEmail() = Patterns.EMAIL_ADDRESS.matcher(et_email_reg.text).matches()
 
     private fun allFieldsChecked(): Boolean {
-        return !(et_first_name.text.trim().isEmpty() || et_last_name.text.trim().isEmpty() || et_username.text.trim().isEmpty() ||
-                et_email_reg.text.trim().isEmpty() || et_password_reg.text.trim().isEmpty() || et_confirm_password.text.trim().isEmpty())
+        return !(et_first_name.text.trim().isEmpty() || et_last_name.text.trim()
+            .isEmpty() || et_username.text.trim().isEmpty() ||
+                et_email_reg.text.trim().isEmpty() || et_password_reg.text.trim()
+            .isEmpty() || et_confirm_password.text.trim().isEmpty())
     }
 
     private fun setFullScreen() {

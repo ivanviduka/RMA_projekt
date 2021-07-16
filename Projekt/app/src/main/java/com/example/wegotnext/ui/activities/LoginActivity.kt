@@ -22,12 +22,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        viewModel.message.observe(this
+        viewModel.message.observe(
+            this
         ) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()}
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.loginSuccess.observe(this) {
-            if(it){
+            if (it) {
                 showMainActivity()
             }
         }
@@ -37,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        tv_forgot_password.setOnClickListener{ showNewPassword()}
+        tv_forgot_password.setOnClickListener { showNewPassword() }
         tv_register_link.setOnClickListener { showRegistration() }
         btn_login.setOnClickListener { loginUser() }
 
@@ -73,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
         return !(et_email.text.trim().isEmpty() || et_password.text.trim().isEmpty())
     }
 
-    private fun showMainActivity(){
+    private fun showMainActivity() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()

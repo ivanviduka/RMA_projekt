@@ -18,12 +18,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        viewModel.message.observe(this
+        viewModel.message.observe(
+            this
         ) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()}
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.passwordSendSuccess.observe(this) {
-            if(it){
+            if (it) {
                 finish()
             }
         }
@@ -31,7 +33,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        btn_submit.setOnClickListener{sendNewPassword()}
+        btn_submit.setOnClickListener { sendNewPassword() }
     }
 
     private fun sendNewPassword() {
@@ -50,6 +52,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     }
 
     private fun validEmail(): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(et_email_forgot.text).matches() && et_email_forgot.text.toString().trim().isNotEmpty()
+        return Patterns.EMAIL_ADDRESS.matcher(et_email_forgot.text)
+            .matches() && et_email_forgot.text.toString().trim().isNotEmpty()
     }
 }

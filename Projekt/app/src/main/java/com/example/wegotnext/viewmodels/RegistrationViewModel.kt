@@ -11,23 +11,25 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
-class RegistrationViewModel: ViewModel() {
+class RegistrationViewModel : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
     private val _registrationSuccess = MutableLiveData<Boolean>()
     val registrationSuccess: LiveData<Boolean> = _registrationSuccess
 
 
-    fun register(userEmail: String,
-                 userPassword: String,
-                 firstname: String,
-                 lastname: String,
-                 username: String){
+    fun register(
+        userEmail: String,
+        userPassword: String,
+        firstname: String,
+        lastname: String,
+        username: String
+    ) {
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPassword)
             .addOnCompleteListener(
                 OnCompleteListener<AuthResult> { task ->
-                    if (task.isSuccessful){
+                    if (task.isSuccessful) {
 
                         val firebaseUser = task.result!!.user
                         val user = User(firebaseUser!!.uid, firstname, lastname, username)
@@ -41,13 +43,11 @@ class RegistrationViewModel: ViewModel() {
                                 _registrationSuccess.postValue(true)
 
                             }
-                            .addOnFailureListener {e->
+                            .addOnFailureListener { e ->
                                 _message.postValue(e.message.toString())
                                 _registrationSuccess.postValue(false)
                             }
-                    }
-
-                    else{
+                    } else {
                         _message.postValue(task.exception!!.message.toString())
                         _registrationSuccess.postValue(false)
 

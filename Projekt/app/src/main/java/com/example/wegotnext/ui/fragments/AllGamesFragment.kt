@@ -29,7 +29,7 @@ class AllGamesFragment: Fragment() {
     Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_all_games, container, false)
-        return view;
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,53 +51,10 @@ class AllGamesFragment: Fragment() {
         recycler_view_all_games.itemAnimator = DefaultItemAnimator()
         recycler_view_all_games.adapter = allGamesAdapter
 
-        /*gamesRef
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val gamesList = arrayListOf<Game>()
-
-                    for (doc in task.result!!) {
-                        val game = doc.toObject(Game::class.java)
-                        game.id = doc.id
-                        gamesList.add(game)
-                    }
-
-                    allgamesAdapter = AllGamesAdapter(gamesList, requireContext(),db)
-                    val mLayoutManager = LinearLayoutManager(requireContext())
-                    recycler_view_all_games.layoutManager = mLayoutManager
-                    recycler_view_all_games.itemAnimator = DefaultItemAnimator()
-                    recycler_view_all_games.adapter = allgamesAdapter
-                } else {
-                    Log.d("TAG", "Error getting documents: ", task.exception)
-                }
-            }
-        */
-
     }
 
     private fun setupListener(){
-
         viewModel.setupListener()
-
-        /*firestoreListener = gamesRef
-            .addSnapshotListener(EventListener { documentSnapshots, e ->
-                if (e != null) {
-                    Log.e("TAG", "Listen failed!", e)
-                    return@EventListener
-                }
-
-                val gameList = arrayListOf<Game>()
-
-                for (doc in documentSnapshots!!) {
-                    val game = doc.toObject(Game::class.java)
-                    game.id = doc.id
-                    gameList.add(game)
-                }
-
-            })
-
-         */
     }
 
     override fun onDestroy() {

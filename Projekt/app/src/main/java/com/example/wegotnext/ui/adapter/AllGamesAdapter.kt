@@ -11,29 +11,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wegotnext.R
 import com.example.wegotnext.model.Game
 import com.example.wegotnext.ui.activities.GameDetailsActivity
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.item_all_games.view.*
 
 
-class AllGamesAdapter (private val context: Context):
+class AllGamesAdapter(private val context: Context) :
     RecyclerView.Adapter<AllGamesAdapter.AllGamesViewHolder>() {
 
     private val games = ArrayList<Game>()
 
     class AllGamesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(game: Game){
+        fun bind(game: Game) {
 
             itemView.tv_all_city.text = game.city
             itemView.tv_all_court.text = game.court
             itemView.tv_all_time.text = game.time
             itemView.tv_all_game_type.text = game.gameType
-            setBackgroundColor(itemView ,game.city!!)
+            setBackgroundColor(itemView, game.city!!)
 
         }
 
 
         private fun setBackgroundColor(itemView: View, city: String) {
-            when(city){
+            when (city) {
                 "Osijek" -> itemView.setBackgroundColor(Color.parseColor("#4BAEFB"))
                 "Zagreb" -> itemView.setBackgroundColor(Color.parseColor("#F84545"))
                 "Split" -> itemView.setBackgroundColor(Color.parseColor("#5FFB4E"))
@@ -46,8 +45,12 @@ class AllGamesAdapter (private val context: Context):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllGamesViewHolder {
 
-        return AllGamesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_all_games,
-            parent, false))
+        return AllGamesViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_all_games,
+                parent, false
+            )
+        )
     }
 
     override fun getItemCount() = games.size
@@ -56,7 +59,7 @@ class AllGamesAdapter (private val context: Context):
         var game = games[position]
         holder.bind(game)
 
-        holder.itemView.setOnClickListener{showGameDetails(game)}
+        holder.itemView.setOnClickListener { showGameDetails(game) }
     }
 
     private fun showGameDetails(game: Game) {
@@ -74,7 +77,7 @@ class AllGamesAdapter (private val context: Context):
 
     }
 
-    fun addGames(listOfGames: MutableList<Game>){
+    fun addGames(listOfGames: MutableList<Game>) {
         this.games.clear()
         this.games.addAll(listOfGames)
         this.notifyDataSetChanged()

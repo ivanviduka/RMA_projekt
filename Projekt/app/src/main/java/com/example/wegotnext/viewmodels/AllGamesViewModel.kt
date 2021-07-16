@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wegotnext.model.Game
-import com.example.wegotnext.ui.adapter.AllGamesAdapter
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.firestore.*
-import kotlinx.android.synthetic.main.fragment_all_games.*
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 
 class AllGamesViewModel : ViewModel() {
 
@@ -23,7 +23,7 @@ class AllGamesViewModel : ViewModel() {
         loadGames()
     }
 
-    fun loadGames(){
+    fun loadGames() {
 
 
         val arrayOfGames: ArrayList<Game> = ArrayList()
@@ -46,8 +46,7 @@ class AllGamesViewModel : ViewModel() {
 
     }
 
-    fun setupListener(){
-
+    fun setupListener() {
 
 
         firestoreListener = gamesRef

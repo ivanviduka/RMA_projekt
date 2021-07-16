@@ -4,7 +4,6 @@ import android.media.AudioManager
 import android.media.SoundPool
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,9 +17,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_game_details.*
 
-class GameDetailsViewModel: ViewModel() {
+class GameDetailsViewModel : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
@@ -38,8 +36,10 @@ class GameDetailsViewModel: ViewModel() {
         }
         soundPool.setOnLoadCompleteListener { _, _, _ -> isLoaded = true }
 
-        this.soundMap[R.raw.coming_audio] = this.soundPool.load(WeGotNextApp.context, R.raw.coming_audio, 1)
-        this.soundMap[R.raw.cancel_audio] = this.soundPool.load(WeGotNextApp.context, R.raw.cancel_audio, 1)
+        this.soundMap[R.raw.coming_audio] =
+            this.soundPool.load(WeGotNextApp.context, R.raw.coming_audio, 1)
+        this.soundMap[R.raw.cancel_audio] =
+            this.soundPool.load(WeGotNextApp.context, R.raw.cancel_audio, 1)
     }
 
     fun playSound(selectedSound: Int) {
@@ -47,7 +47,7 @@ class GameDetailsViewModel: ViewModel() {
         this.soundPool.play(soundID, 1f, 1f, 1, 0, 1f)
     }
 
-    fun updateGame(gameID: String,game: Game){
+    fun updateGame(gameID: String, game: Game) {
         db.collection("Games")
             .document(gameID)
             .set(game)
@@ -57,7 +57,7 @@ class GameDetailsViewModel: ViewModel() {
             }
     }
 
-    fun showMap(map: GoogleMap, courtID: String){
+    fun showMap(map: GoogleMap, courtID: String) {
         db.collection("Courts").document(courtID).get()
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (task.isSuccessful) {
