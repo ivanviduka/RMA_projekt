@@ -13,6 +13,8 @@
     <color name="lightred">#F84545</color>
     <color name="lightyellow">#FBE555</color>
     <color name="lightgreen">#5FFB4E</color>
+    <color name="completegreen">#17B511</color>
+    <color name="notcompletered">#CA1010</color>
     <color name="lightgrey">#D2D3D2</color>
     <color name="link_blue">#028BF8</color>
 </resources>
